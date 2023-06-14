@@ -60,9 +60,6 @@ public class Pessoa  implements Serializable {
 	@Column(nullable = true,columnDefinition = "DATE")
 	private LocalDate dataSaida;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "endereco_id")
-	private Endereco endereco;
 	
 	@ManyToOne
 	@JoinColumn(name = "filial_id")
@@ -73,7 +70,7 @@ public class Pessoa  implements Serializable {
 	}
 
 	public Pessoa(Integer id, String nome, Long cartaoMembro, LocalDate dataNasc,
-			String nomeCongregacao, Integer areaNumero, LocalDate dataEntrada, LocalDate dataSaida, Endereco endereco,
+			String nomeCongregacao, Integer areaNumero, LocalDate dataEntrada, LocalDate dataSaida,
 			Filial filial) {
 		super();
 		this.id = id;
@@ -84,7 +81,6 @@ public class Pessoa  implements Serializable {
 		this.areaNumero = areaNumero;
 		this.dataEntrada = dataEntrada;
 		this.dataSaida = dataSaida;
-		this.endereco = endereco;
 		this.filial = filial;
 	}
 
@@ -155,15 +151,6 @@ public class Pessoa  implements Serializable {
 		this.dataSaida = dataSaida;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
-
 	public Filial getFilial() {
 		return filial;
 	}
@@ -172,7 +159,6 @@ public class Pessoa  implements Serializable {
 		this.filial = filial;
 	}
 
-	
 	
 	public String getFuncao() {
 		return funcao;
@@ -214,7 +200,7 @@ public class Pessoa  implements Serializable {
 	public String toString() {
 		return "Pessoa [id=" + id + ", nome=" + nome + ", cartaoMembro=" + cartaoMembro
 				+ ", dataNasc=" + dataNasc + ", nomeCongregacao=" + nomeCongregacao + ", areaNumero=" + areaNumero
-				+ ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida + ", endereco=" + endereco
+				+ ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida 
 				+ ", filial=" + filial + "]";
 	}
 	

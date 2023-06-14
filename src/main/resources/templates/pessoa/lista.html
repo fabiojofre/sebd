@@ -107,42 +107,27 @@
 	                        <th>Setor / Filial</th>
 	                        <th>Área</th>
 	                        <th>Congregação</th>
-	                        <th>Endereço</th>
-	                        <th>Data de Nascimento</th>
+	                        <th>Função</th>
+	                        <th>Telefone</th>
 	                        <th>Ação</th>
 	                    </tr>
 	                    </thead>
 	                    <tbody>
 	                    <tr th:each="p : ${pessoas}">
-	                        <td th:text="S{p.id}">1</td>
-	                        <td th:text="S{p.nome}">Jorge da Silva</td>
-	                        <td th:text="S{p.cartaoMembro}"></td>
-	                        <td th:text="S{p.filial.nome}">Recursos Humanos</td>
-	                        <td th:text="S{p.areaNumero}"></td>
-	                        <td th:text="S{p.nomeCongregacao}"></td>
-	                        <td>
-	                            <button type="button" class="btn btn-secondary btn-sm" data-container="body"
-	                                    data-toggle="popover" data-placement="top"
-	                                    tr.:attr ="data-content=${#strings.concat(
-	                                    	p.endereco.logradouro, ', ',
-	                                    	p.endereco.numero, ' ',
-	                                    	p.endereco.complamento,, ' - ',
-	                                    	p.endereco.bairro, ', ',
-	                                    	p.endereco.cidade, ', - ',
-	                                    	p.endereco.uf.sigla, ' - ',
-	                                    	p.endereco.cep
-	                                    	)}">
-	                                    
-	                                <span class="oi oi-eye" title="Visualizar" aria-hidden="true"></span>
-	                            </button>
-	                        </td>
-	                        <td th:text="${#temporals.format(p.dataNasc, 'dd/MM/yyyy')}">01/10/2014</td>
+	                        <td th:text="${p.id}">1</td>
+	                        <td th:text="${p.nome}">Jorge da Silva</td>
+	                        <td th:text="${p.cartaoMembro}"></td>
+	                        <td th:text="${p.filial.nome}">Recursos Humanos</td>
+	                        <td th:text="${p.areaNumero}"></td>
+	                        <td th:text="${p.nomeCongregacao}"></td>
+	                        <td th:text="${p.funcao}"></td>
+	                        <td th:text="${p.telefone}"></td>
 	                        <td></td>
 	                        <td colspan="2">
-	                            <a class="btn btn-info btn-sm" href="/pessoas/editar/1" role="button">
+	                            <a class="btn btn-info btn-sm" th:href="@{/pessoas/editar/{id} (id=${p.id})}" role="button">
 	                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 	                            </a>
-	                            <button id="btn_funcionarios/excluir/1" type="button" class="btn btn-danger btn-sm"
+	                            <button th:id="${#strings.concat('btn_funcionarios/excluir/',p.id)}" type="button" class="btn btn-danger btn-sm"
 	                                    data-toggle="modal" data-target="#myModal">
 	                                <span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 	                            </button>

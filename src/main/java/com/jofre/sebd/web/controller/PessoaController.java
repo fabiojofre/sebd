@@ -37,7 +37,8 @@ public class PessoaController {
 	}
 
 	@GetMapping("/listar")
-	public String listar() {
+	public String listar(ModelMap model) {
+		model.addAttribute("pessoas", pessoaService.buscarTodos());
 		return "/pessoa/lista";
 	}
 	
