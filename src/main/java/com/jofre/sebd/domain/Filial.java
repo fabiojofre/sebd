@@ -11,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Filial implements Serializable {
@@ -20,6 +22,8 @@ public class Filial implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank(message ="Informe um nome.")
+	@Size(min = 3, max = 60, message = "A descrição da filial deve conter entre {min} e {max} caracteres.")
 	@Column(nullable =  false, length = 60, unique = true)
 	private String nome;
 	

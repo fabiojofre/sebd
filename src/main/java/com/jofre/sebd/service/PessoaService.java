@@ -16,4 +16,12 @@ void salvar(Pessoa pessoa);
 	
 	List<Pessoa>buscarTodos();
 
+	List<Pessoa>buscarPorNome(String nome);
+
+	List<Pessoa> buscarPorFilial(Integer id);
+
+	List<Pessoa>buscarPorCartao(Long cartaoMembro);
+
+	List<Pessoa>buscarPorTelefone(String telefone);
+
 }

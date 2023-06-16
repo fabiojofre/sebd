@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Area implements Serializable {
@@ -15,6 +17,8 @@ public class Area implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank(message ="Informe um nome.")
+	@Size(min = 6, max = 8, message = "A descrição da área deve conter entre {min} e {max} caracteres, Ex: Área 99.")
 	@Column(nullable =  false, length = 60, unique = true)
 	private String nome;
 	

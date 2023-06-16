@@ -27,6 +27,9 @@
 	        
 	            <form th:action="${pessoa.id == null} ? @{/pessoas/salvar} : @{/pessoas/editar}" 
 	                  th:object="${pessoa}" method="POST">
+	                  
+	                  <div th:replace="fragments/validacao :: validacao"></div>
+	                  
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
 	                        <label for="nome">Nome Pessoa</label>
@@ -36,10 +39,17 @@
 	
 	                        </div>
 	                    </div>
-	                    <div class="form-group col-md-6">
+	                    <div class="form-group col-md-5">
 	                        <label for="cartaoMembro">Cartão de Membro</label>
 	                        <input type="number" class="form-control" id="cartaoMembro" min="1" placeholder="Apenas números"
 	                               data-mask-reverse="true" th:field="*{cartaoMembro}"/>
+	                        <div class="invalid-feedback">
+	                        </div>
+	                    </div>
+	                     <div class="form-group col-md-1">
+	                        <label for="cartaoMembro">Conferido</label>
+	                        <input type="checkbox" class="form-control" id="conferido"
+	                                th:field="*{conferido}"/>
 	                        <div class="invalid-feedback">
 	                        </div>
 	                    </div>
@@ -59,7 +69,7 @@
 	                    </div>
 	                        <div class="form-group col-md-6">
 	                        <label for="telefone">Telefone com WhatsApp</label>
-	                        <input type="text" class="form-control" id="telefone" onkeypress="$(this).mask('(00) 0 0000-0009')" placeholder="(XX) X XXXX-XXXX"
+	                        <input type="text" class="form-control" id="telefone" onkeypress="$(this).mask('(00) 0.0000-0009')" placeholder="(XX) X.XXXX-XXXX"
 	                               data-mask-reverse="true" th:field="*{telefone}"/>
 	                        <div class="invalid-feedback">
 	                        </div>

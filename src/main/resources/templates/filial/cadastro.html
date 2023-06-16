@@ -26,6 +26,9 @@
 	        
 	            <form th:action="${filial.id == null} ? @{/filiais/salvar} : @{/filiais/editar}" 
 	            th:object="${filial}" method="POST">
+	            
+	             <div th:replace="fragments/validacao :: validacao"></div>
+	            
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
 	                        <label for="nome">Setor - Filial</label>

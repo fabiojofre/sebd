@@ -15,4 +15,12 @@ public interface PessoaDao {
 	
 	List<Pessoa>findAll();
 
+	List<Pessoa> findByNome(String nome);
+
+	List<Pessoa> findByFilialId(Integer id);
+
+	List<Pessoa> findByCartao(Long cartaoMembro);
+
+	List<Pessoa> findByTelefone(String telefone);
+
 }

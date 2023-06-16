@@ -46,4 +46,26 @@ public class PessoaServiceImpl implements PessoaService{
 		return dao.findAll();
 	}
 
+	@Override @Transactional(readOnly = true)
+	public List<Pessoa> buscarPorNome(String nome) {
+	
+		return dao.findByNome(nome);
+	}
+
+	@Override
+	public List<Pessoa> buscarPorFilial(Integer id) {
+		return dao.findByFilialId(id);
+	}
+
+	@Override
+	public List<Pessoa> buscarPorCartao(Long cartaoMembro) {
+		return dao.findByCartao(cartaoMembro);
+	}
+
+	@Override
+	public List<Pessoa> buscarPorTelefone(String telefone) {
+		// TODO Auto-generated method stub
+		return dao.findByTelefone(telefone);
+	}
+
 }

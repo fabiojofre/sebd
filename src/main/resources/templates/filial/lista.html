@@ -34,6 +34,7 @@
 	                    </thead>
 	                    <tbody>
 		                    <tr th:each="a:${filiais}">
+		                    	<td th:text="${a.id}"><td/>
 		                        <td th:text="${a.nome}">Administração</td>
 		                        <td colspan="2">
 		                            <a class="btn btn-info btn-sm" th:href="@{/filiais/editar/{id} (id=${a.id})}" role="button">

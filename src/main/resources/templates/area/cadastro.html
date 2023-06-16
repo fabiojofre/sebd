@@ -26,6 +26,9 @@
 	        
 	            <form th:action="${area.id == null} ? @{/areas/salvar} : @{/areas/editar}" 
 	            th:object="${area}" method="POST">
+	            
+	            <div th:replace="fragments/validacao :: validacao"></div>
+	            
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
 	                        <label for="nome">Área</label>

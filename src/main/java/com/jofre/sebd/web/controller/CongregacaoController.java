@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,8 @@ import com.jofre.sebd.domain.Area;
 import com.jofre.sebd.domain.Congregacao;
 import com.jofre.sebd.service.AreaService;
 import com.jofre.sebd.service.CongregacaoService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/congregacoes")
@@ -39,7 +42,11 @@ public class CongregacaoController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(Congregacao congregacao, RedirectAttributes attr) {
+	public String salvar(@Valid Congregacao congregacao, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors()) {
+			return "/congregacao/cadastro";
+		}
+		
 		congregacaoservice.salvar(congregacao);
 		attr.addFlashAttribute("success","Congregação cadastrada com sucesso.");
 		return "redirect:/congregacoes/cadastrar";
@@ -52,7 +59,11 @@ public class CongregacaoController {
 	}
 	
 	@PostMapping("/editar")
-	public String editar(Congregacao congregacao, RedirectAttributes attr) {
+	public String editar(@Valid Congregacao congregacao, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors()) {
+			return "/congregacao/cadastro";
+		}
+		
 		congregacaoservice.editar(congregacao);
 		attr.addFlashAttribute("success","Congregação atualizada com sucesso.");
 		return "redirect:/congregacoes/cadastrar";

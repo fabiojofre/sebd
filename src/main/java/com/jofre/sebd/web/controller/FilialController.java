@@ -3,6 +3,7 @@ package com.jofre.sebd.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jofre.sebd.domain.Filial;
 import com.jofre.sebd.service.FilialService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/filiais")
@@ -31,7 +34,11 @@ public class FilialController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(Filial filial, RedirectAttributes attr) {
+	public String salvar(@Valid Filial filial, BindingResult result, RedirectAttributes attr) {
+		
+		if(result.hasErrors()) {
+			return "/filial/cadastro";
+		}
 		service.salvar(filial);
 		attr.addFlashAttribute("success","Filial cadastrada com sucesso.");
 		return "redirect:/filiais/cadastrar";
@@ -44,7 +51,11 @@ public class FilialController {
 	}
 
 	@PostMapping("/editar")
-	public String editar(Filial filial, RedirectAttributes attr) {
+	public String editar(@Valid Filial filial,  BindingResult result, RedirectAttributes attr) {
+		
+		if(result.hasErrors()) {
+			return "/filial/cadastro";
+		}
 		service.editar(filial);
 		attr.addFlashAttribute("success","Filial editada com sucesso.");
 		return "redirect:/filiais/cadastrar";

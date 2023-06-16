@@ -1,8 +1,6 @@
 package com.jofre.sebd.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -12,7 +10,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Congregacao implements Serializable {
@@ -22,9 +22,12 @@ public class Congregacao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank(message ="Informe o nome da congregação.")
+	@Size(min = 3, max = 60, message = "A descrição da congregação deve conter entre {min} e {max} caracteres.")
 	@Column(nullable =  false, length = 60)
 	private String nome;
 	
+	@NotNull(message = "Selecione uma área.")
 	@ManyToOne
 	@JoinColumn(name= "id_area")
 	private Area area;
