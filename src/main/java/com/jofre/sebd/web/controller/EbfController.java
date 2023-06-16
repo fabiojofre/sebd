@@ -23,8 +23,8 @@ import com.jofre.sebd.service.PessoaService;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/pessoas")
-public class PessoaController {
+@RequestMapping("/ebf2023")
+public class EbfController {
 
 
 	@Autowired
@@ -36,72 +36,39 @@ public class PessoaController {
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Pessoa pessoa) {
-		return "/pessoa/cadastro";
+		return "/ebf/cadastro";
 	}
 
-	@GetMapping("/listar")
-	public String listar(ModelMap model) {
-		model.addAttribute("pessoas", pessoaService.buscarTodos());
-		return "/pessoa/lista";
-	}
-	
+		
 	@PostMapping("/salvar")
 	public String salvar(@Valid Pessoa pessoa, BindingResult result, RedirectAttributes attr) {
 		
 		if(result.hasErrors()) {
-			return "/pessoa/cadastro";
+			return "/ebf/cadastro";
 		}
 		pessoaService.salvar(pessoa);
 		attr.addFlashAttribute("success","Inscrição efetuada com sucesso. Número de incrição: "+pessoa.getId());
-		return "redirect:/pessoas/cadastrar";
+		return "redirect:/ebf2023/cadastrar";
 	}
 	
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Integer id, ModelMap model) {
 		model.addAttribute("pessoa", pessoaService.buscarPorId(id));
-		return "pessoa/cadastro";
+		return "ebf/cadastro";
 	}
 	
 	@PostMapping("/editar")
 	public String editar(@Valid Pessoa pessoa, BindingResult result, RedirectAttributes attr) {
 		
 		if(result.hasErrors()) {
-			return "/pessoa/cadastro";
+			return "/ebf/cadastro";
 		}
 		pessoaService.editar(pessoa);
 		attr.addFlashAttribute("success","Pessoa atualizada com sucesso.");
-		return "redirect:/pessoas/cadastrar";
+		return "redirect:/ebf2023/cadastrar";
 	}
 	
-	@GetMapping("/excluir/{id}")
-	public String excluir(@PathVariable("id") Integer id, RedirectAttributes attr) {
-			pessoaService.excluir(id);
-			attr.addFlashAttribute("success","Cadastro excluido com sucesso.");
-		return "redirect:/pessoas/listar";
-	}
 	
-	@GetMapping("/buscar/nome")
-	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {
-		model.addAttribute("pessoas", pessoaService.buscarPorNome(nome));
-		return "/pessoa/lista";
-	}
-	
-	@GetMapping("/buscar/filial")
-	public String getPorFilial(@RequestParam("id") Integer id, ModelMap model) {
-		model.addAttribute("pessoas", pessoaService.buscarPorFilial(id));
-		return "/pessoa/lista";
-	}
-	
-	@GetMapping("/buscar/cartao")
-	public String getPorCartao(@RequestParam("cartaoMembro") Long cartaoMembro, ModelMap model) {
-		model.addAttribute("pessoas", pessoaService.buscarPorCartao(cartaoMembro));
-		return "/pessoa/lista";
-	}
-	@GetMapping("/buscar/telefone")
-	public String getPorTelefone(@RequestParam("telefone") String telefone, ModelMap model) {
-		model.addAttribute("pessoas", pessoaService.buscarPorTelefone(telefone));
-		return "/pessoa/lista";
-	}
 
 	@ModelAttribute("filiais")
 	public List<Filial>listaDeFiliais(){
