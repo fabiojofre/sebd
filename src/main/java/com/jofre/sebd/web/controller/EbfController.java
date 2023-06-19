@@ -36,6 +36,9 @@ public class EbfController {
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Pessoa pessoa) {
+		if(pessoaService.buscarTodos().size() > 33) {
+			return "/ebf/finalizada";
+		}
 		return "/ebf/cadastro";
 	}
 
