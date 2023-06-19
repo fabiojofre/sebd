@@ -4,7 +4,7 @@
 <body>
 			<nav class="sidebar active" th:fragment="nav-sidebar">
 				<ul class="nav nav-pills">
-					<li class="nav-item"><a class="nav-link " href="/sebd"> <i
+					<li class="nav-item"><a class="nav-link " th:href="@{/}"> <i
 							class="oi oi-home"></i> <span>Home</span>
 					</a></li>
 				</ul>
@@ -12,10 +12,10 @@
 				<ul class="nav nav-pills">
 					<li class="nav-item"><span class="nav-link active" >Filiais</span></li>
 					<li class="nav-item"><a class="nav-link"
-						href="/filiais/cadastrar"> <i class="oi oi-plus"></i> <span>Cadastrar</span>
+						th:href="@{/filiais/cadastrar}"> <i class="oi oi-plus"></i> <span>Cadastrar</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="/filiais/listar"> <i class="oi oi-spreadsheet"></i>
+						th:href="@{/filiais/listar}"> <i class="oi oi-spreadsheet"></i>
 							<span>Listar </span>
 					</a></li>
 				</ul>
@@ -23,10 +23,10 @@
 				<ul class="nav nav-pills">
 					<li class="nav-item"><span class="nav-link active" >Àreas</span></li>
 					<li class="nav-item"><a class="nav-link"
-						href="/areas/cadastrar"> <i class="oi oi-plus"></i> <span>Cadastrar</span>
+						th:href="@{/areas/cadastrar}"> <i class="oi oi-plus"></i> <span>Cadastrar</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="/areas/listar"> <i class="oi oi-spreadsheet"></i>
+						th:href="@{/areas/listar}"> <i class="oi oi-spreadsheet"></i>
 							<span>Listar </span>
 					</a></li>
 				</ul>
@@ -34,10 +34,10 @@
 				<ul class="nav nav-pills">
 					<li class="nav-item"><span class="nav-link active" >Congregações</span></li>
 					<li class="nav-item"><a class="nav-link" 
-						href="/congregacoes/cadastrar"> <i class="oi oi-plus"></i> <span>Cadastrar </span>
+						th:href="@{/congregacoes/cadastrar}"> <i class="oi oi-plus"></i> <span>Cadastrar </span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" 
-						href="/congregacoes/listar"> <i
+						th:href="@{/congregacoes/listar}"> <i
 							class="oi oi-spreadsheet"></i> <span>Listar </span>
 					</a></li>
 				</ul>
@@ -45,10 +45,10 @@
 				<ul class="nav nav-pills">
 					<li class="nav-item"><span class="nav-link active">Pessoas</span></li>
 					<li class="nav-item"><a class="nav-link" 
-						href="/pessoas/cadastrar"> <i class="oi oi-plus"></i> <span>Cadastrar </span>
+						th:href="@{/pessoas/cadastrar}"> <i class="oi oi-plus"></i> <span>Cadastrar </span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" 
-						href="/pessoas/listar"> <i class="oi oi-spreadsheet"></i> <span>Listar </span>
+						th:href="@{/pessoas/listar}"> <i class="oi oi-spreadsheet"></i> <span>Listar </span>
 					</a></li>
 					<br>
 					<br>
