@@ -8,7 +8,8 @@ public class SebdApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SebdApplication.class, args);
-		System.out.println("Teste");
+//		System.out.println("Teste");
+		
 	}
 
 }
