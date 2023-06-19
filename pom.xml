@@ -15,7 +15,7 @@
 	<groupId>com.jofre.sebd</groupId>
 	<artifactId>SEBD</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	
 	<name>SEBD</name>
 	<description>Superintendência das Escolas Bíblicas Dominicais</description>
