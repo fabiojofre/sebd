@@ -24,20 +24,20 @@ public class FilialController {
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Filial filial) {
-		return "/filial/cadastro";
+		return "filial/cadastro";
 	}
 
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
 		model.addAttribute("filiais", service.buscarTodos());
-		return "/filial/lista";
+		return "filial/lista";
 	}
 	
 	@PostMapping("/salvar")
 	public String salvar(@Valid Filial filial, BindingResult result, RedirectAttributes attr) {
 		
 		if(result.hasErrors()) {
-			return "/filial/cadastro";
+			return "filial/cadastro";
 		}
 		service.salvar(filial);
 		attr.addFlashAttribute("success","Filial cadastrada com sucesso.");
@@ -47,7 +47,7 @@ public class FilialController {
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Integer id, ModelMap model) {
 		model.addAttribute("filial", service.buscarPorId(id));
-		return "/filial/cadastro";
+		return "filial/cadastro";
 	}
 
 	@PostMapping("/editar")

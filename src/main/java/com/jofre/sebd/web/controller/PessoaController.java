@@ -36,20 +36,20 @@ public class PessoaController {
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Pessoa pessoa) {
-		return "/pessoa/cadastro";
+		return "pessoa/cadastro";
 	}
 
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
 		model.addAttribute("pessoas", pessoaService.buscarTodos());
-		return "/pessoa/lista";
+		return "pessoa/lista";
 	}
 	
 	@PostMapping("/salvar")
 	public String salvar(@Valid Pessoa pessoa, BindingResult result, RedirectAttributes attr) {
 		
 		if(result.hasErrors()) {
-			return "/pessoa/cadastro";
+			return "pessoa/cadastro";
 		}
 		pessoaService.salvar(pessoa);
 		attr.addFlashAttribute("success","Inscrição efetuada com sucesso. Número de incrição: "+pessoa.getId());
@@ -66,7 +66,7 @@ public class PessoaController {
 	public String editar(@Valid Pessoa pessoa, BindingResult result, RedirectAttributes attr) {
 		
 		if(result.hasErrors()) {
-			return "/pessoa/cadastro";
+			return "pessoa/cadastro";
 		}
 		pessoaService.editar(pessoa);
 		attr.addFlashAttribute("success","Pessoa atualizada com sucesso.");
@@ -83,24 +83,24 @@ public class PessoaController {
 	@GetMapping("/buscar/nome")
 	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {
 		model.addAttribute("pessoas", pessoaService.buscarPorNome(nome));
-		return "/pessoa/lista";
+		return "pessoa/lista";
 	}
 	
 	@GetMapping("/buscar/filial")
 	public String getPorFilial(@RequestParam("id") Integer id, ModelMap model) {
 		model.addAttribute("pessoas", pessoaService.buscarPorFilial(id));
-		return "/pessoa/lista";
+		return "pessoa/lista";
 	}
 	
 	@GetMapping("/buscar/cartao")
 	public String getPorCartao(@RequestParam("cartaoMembro") Long cartaoMembro, ModelMap model) {
 		model.addAttribute("pessoas", pessoaService.buscarPorCartao(cartaoMembro));
-		return "/pessoa/lista";
+		return "pessoa/lista";
 	}
 	@GetMapping("/buscar/telefone")
 	public String getPorTelefone(@RequestParam("telefone") String telefone, ModelMap model) {
 		model.addAttribute("pessoas", pessoaService.buscarPorTelefone(telefone));
-		return "/pessoa/lista";
+		return "pessoa/lista";
 	}
 
 	@ModelAttribute("filiais")

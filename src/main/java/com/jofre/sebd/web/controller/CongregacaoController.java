@@ -32,19 +32,19 @@ public class CongregacaoController {
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Congregacao congregacao) {
-		return "/congregacao/cadastro";
+		return "congregacao/cadastro";
 	}
 
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
 		model.addAttribute("congregacoes", congregacaoservice.buscarTodos());
-		return "/congregacao/lista";
+		return "congregacao/lista";
 	}
 	
 	@PostMapping("/salvar")
 	public String salvar(@Valid Congregacao congregacao, BindingResult result, RedirectAttributes attr) {
 		if(result.hasErrors()) {
-			return "/congregacao/cadastro";
+			return "congregacao/cadastro";
 		}
 		
 		congregacaoservice.salvar(congregacao);
@@ -61,7 +61,7 @@ public class CongregacaoController {
 	@PostMapping("/editar")
 	public String editar(@Valid Congregacao congregacao, BindingResult result, RedirectAttributes attr) {
 		if(result.hasErrors()) {
-			return "/congregacao/cadastro";
+			return "congregacao/cadastro";
 		}
 		
 		congregacaoservice.editar(congregacao);

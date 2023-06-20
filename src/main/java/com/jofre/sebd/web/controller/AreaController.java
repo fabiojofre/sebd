@@ -24,20 +24,20 @@ public class AreaController {
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Area area) {
-		return "/area/cadastro";
+		return "area/cadastro";
 	}
 
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
 		model.addAttribute("areas", service.buscarTodos());
-		return "/area/lista";
+		return "area/lista";
 	}
 	
 	@PostMapping("/salvar")
 	public String salvar(@Valid Area area,  BindingResult result, RedirectAttributes attr) {
 		
 		if(result.hasErrors()) {
-			return "/area/cadastro";
+			return "area/cadastro";
 		}
 		
 		service.salvar(area);
@@ -48,14 +48,14 @@ public class AreaController {
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Integer id, ModelMap model) {
 		model.addAttribute("area", service.buscarPorId(id));
-		return "/area/cadastro";
+		return "area/cadastro";
 	}
 
 	@PostMapping("/editar")
 	public String editar(@Valid Area area,  BindingResult result, RedirectAttributes attr) {
 		
 		if(result.hasErrors()) {
-			return  "/area/cadastro";
+			return  "area/cadastro";
 		}
 		
 		service.editar(area);

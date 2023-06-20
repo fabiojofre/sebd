@@ -39,7 +39,7 @@ public class EbfController {
 		if(pessoaService.buscarTodos().size() > 2000) {
 			return "/ebf/finalizada";
 		}
-		return "/ebf/cadastro";
+		return "ebf/cadastro";
 	}
 
 		
@@ -47,7 +47,7 @@ public class EbfController {
 	public String salvar(@Valid Pessoa pessoa, BindingResult result, RedirectAttributes attr) {
 		
 		if(result.hasErrors()) {
-			return "/ebf/cadastro";
+			return "ebf/cadastro";
 		}
 		pessoaService.salvar(pessoa);
 		attr.addFlashAttribute("success","Inscrição efetuada com sucesso. Número de incrição: "+pessoa.getId());
@@ -64,7 +64,7 @@ public class EbfController {
 	public String editar(@Valid Pessoa pessoa, BindingResult result, RedirectAttributes attr) {
 		
 		if(result.hasErrors()) {
-			return "/ebf/cadastro";
+			return "ebf/cadastro";
 		}
 		pessoaService.editar(pessoa);
 		attr.addFlashAttribute("success","Pessoa atualizada com sucesso.");
